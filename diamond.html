@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Diamond Event</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 5%;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            background-color: white;
+            text-align: center;
+        }
+
+        h2 {
+            margin-bottom: 20px;
+            font-size: 3.5vw;
+        }
+
+        p {
+            font-size: 2vw;
+            margin-bottom: 20px;
+        }
+
+        .button {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+            max-width: 350px;
+            margin: 10px auto;
+            padding: 15px;
+            background-color: #4CAF50;
+            color: white;
+            text-align: center;
+            border-radius: 5px;
+            text-decoration: none;
+            font-size: 1.8em;
+            transition: background-color 0.3s ease;
+        }
+
+        .button:hover {
+            background-color: #45a049;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .container {
+                width: 95%;
+                padding: 10%;
+            }
+
+            h2 {
+                font-size: 6vw;
+            }
+
+            p {
+                font-size: 4vw;
+            }
+
+            .button {
+                font-size: 1.5em;
+                max-width: 90%;
+                padding: 20px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            h2 {
+                font-size: 7vw;
+            }
+
+            p {
+                font-size: 5vw;
+            }
+
+            .button {
+                font-size: 1.3em;
+                max-width: 90%;
+                padding: 15px;
+            }
+        }
+
+        /* Désactivation des boutons */
+        .disabled {
+            background-color: #ccc;
+            color: #666;
+            pointer-events: none;
+            opacity: 0.6;
+        }
+
+        /* Style pour le message d'inscription */
+        .message {
+            font-size: 1.5em;
+            color: #f44336;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Diamond Event</h2>
+        <p>Choisissez votre Day1:</p>
+        <a href="day1a.html" class="button" id="day1a">Day1a - vendredi 20 juin - 19:00 - 78 joueurs max</a>
+        <a href="day1b.html" class="button" id="day1b">Day1b - samedi 21 juin - 09:30 - 78 joueurs max</a>
+        <a href="day1c.html" class="button" id="day1c">Day1c - samedi 21 juin - 13:00 - 36 joueurs max</a>
+       <br> 
+        <!-- Message pour informer l'utilisateur qu'il est déjà inscrit -->
+        <div class="message" id="message" style="display: none;">
+            Vous avez déjà choisi un Day1 pour cet événement.
+        </div>
+    </div>
+
+    <script>
+        // Vérifier si l'utilisateur est déjà inscrit
+        const registered = localStorage.getItem('registered');
+
+        if (registered === 'true') {
+            // Désactiver tous les boutons si l'utilisateur est déjà inscrit
+            ['day1a', 'day1b', 'day1c'].forEach(id => {
+                const btn = document.getElementById(id);
+                if (btn) {
+                    btn.classList.add('disabled'); // Ajout de la classe "disabled"
+                }
+            });
+
+            // Afficher le message indiquant que l'utilisateur a déjà choisi un Day1
+            const message = document.getElementById('message');
+            if (message) {
+                message.style.display = 'block';
+            }
+        }
+
+        // Exemple de fonction pour définir l'état d'inscription (elle doit être appelée lors de la soumission du formulaire)
+        function setRegistrationStatus() {
+            localStorage.setItem('registered', 'true');
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Choisissez votre tournoi</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+        .container {
+            max-width: 90%;
+            margin: auto;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            text-align: center;
+            background-color: white;
+        }
+        h2 {
+            margin-bottom: 20px;
+        }
+        .button {
+            display: flex;
+            align-items: center;
+            justify-content: flex-start;
+            width: 100%;
+            max-width: 300px;
+            margin: 10px auto;
+            padding: 10px;
+            background-color: #333333;
+            color: white;
+            text-align: left;
+            border-radius: 5px;
+            text-decoration: none;
+        }
+        .button img {
+            margin-right: 10px;
+            width: 20px;
+            height: 20px;
+        }
+        .button:hover {
+            background-color: #111111;
+        }
+        @media (min-width: 600px) {
+            .container {
+                max-width: 80%;
+            }
+            .button {
+                max-width: 400px;
+            }
+        }
+        @media (min-width: 768px) {
+            .container {
+                max-width: 70%;
+            }
+            .button {
+                max-width: 500px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Choisissez votre tournoi</h2>
+<br>
+        <a href="diamond.html" class="button" id="diamondButton">
+            <img src="https://www.freeiconspng.com/thumbs/diamond-png/diamond-png-5.png" alt="Diamond Icon"> Diamond Event
+        </a>
+        <a href="gold.html" class="button">
+            <img src="https://png.pngtree.com/png-vector/20231026/ourmid/pngtree-realistic-gold-bars-png-image_10370401.png" alt="Gold Icon"> Gold Event
+        </a>
+        <a href="silver.html" class="button">
+            <img src="https://pngimg.com/d/silver_PNG17188.png" alt="Silver Icon"> Silver Event
+        </a>
+    </div>
+</body>
+</html>

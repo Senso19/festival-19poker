@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Merci pour votre inscription</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      margin-top: 100px;
+      background-color: #f4f4f4;
+    }
+    h1 {
+      color: #4CAF50;
+    }
+    a {
+      display: inline-block;
+      margin-top: 20px;
+      text-decoration: none;
+      background-color: #333;
+      color: white;
+      padding: 10px 20px;
+      border-radius: 5px;
+    }
+  </style>
+</head>
+<body>
+  <h1>Merci pour votre inscription !</h1>
+  <p>Un e-mail de confirmation vous sera envoyé.</p>
+  <a href="index.html">Retour à l'accueil</a>
+
+  <script>
+    // On active l'indicateur d'inscription SEULEMENT ici
+    localStorage.setItem('registered', 'true');
+  </script>
+</body>
+</html>
