@@ -122,7 +122,7 @@
     </div>
     <div class="container">
         <h2>Diamond Event</h2>
-        <p>Choisissez votre Day1:</p>
+        <p>Choisissez votre Day1 :</p>
         <a href="day1a.html" class="button" id="day1a">Day1a - vendredi 20 juin - 19:00 <br> 78 joueurs max</a>
         <a href="day1b.html" class="button" id="day1b">Day1b - samedi 21 juin - 09:30 <br> 78 joueurs max</a>
         <a href="day1c.html" class="button" id="day1c">Day1c - samedi 21 juin - 13:00 <br> 36 joueurs max</a>
@@ -132,5 +132,31 @@
             Vous avez déjà choisi un Day1 pour cet événement.
         </div>
     </div>
+     <script>
+        // Vérifier si l'utilisateur est déjà inscrit
+        const registered = localStorage.getItem('registered');
+
+        if (registered === 'true') {
+            // Désactiver tous les boutons si l'utilisateur est déjà inscrit
+            ['day1a', 'day1b', 'day1c'].forEach(id => {
+                const btn = document.getElementById(id);
+                if (btn) {
+                    btn.classList.add('disabled'); // Ajout de la classe "disabled"
+                }
+            });
+
+            // Afficher le message indiquant que l'utilisateur a déjà choisi un Day1
+            const message = document.getElementById('message');
+            if (message) {
+                message.style.display = 'block';
+            }
+        }
+
+        // Exemple de fonction pour définir l'état d'inscription (elle doit être appelée lors de la soumission du formulaire)
+        function setRegistrationStatus() {
+            localStorage.setItem('registered', 'true');
+        }
+    </script>
+
 </body>
 </html>
