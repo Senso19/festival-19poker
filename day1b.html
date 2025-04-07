@@ -1,1 +1,142 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Inscription Day1b</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #111111;
+      padding: 0;
+      margin: 0;
+    }
+     .header {
+      background-color: #111111;
+      color: white;
+      padding: 50px;
+      text-align: center;
+        }
+    .logo {
+      max-width: 100%;
+      height: auto;
+}
+    .container {
+      max-width: 80%;
+      box-sizing: border-box;
+      background: #fff;
+      padding: 5% 5%;
+      border-radius: 10px;
+      margin: 0 auto;
+    }
 
+    h2 {
+      text-align: center;
+      font-size: 2.5vw;
+      margin-bottom: 20px;
+    }
+
+    input, button {
+      width: 100%;
+      margin-bottom: 10px;
+      padding: 10px;
+      font-size: 1.2em;
+      box-sizing: border-box;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+
+    button {
+      background-color: #111111;
+      color: white;
+      border: none;
+      cursor: pointer;
+      font-size: 1.2em;
+    }
+
+    button:hover {
+      background-color: #095228;
+    }
+
+    input:focus, button:focus {
+      outline: none;
+      border-color: #4CAF50;
+    }
+
+    /* Responsive Design */
+    @media (max-width: 768px) {
+      h2 {
+        font-size: 5vw;
+      }
+
+      input, button {
+        font-size: 1.5em;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .container {
+        padding: 5% 2%;
+      }
+
+      h2 {
+        font-size: 6vw;
+      }
+
+      input, button {
+        font-size: 1.4em;
+      }
+    }
+  </style>
+</head>
+<body>
+   <div class="header">
+        <img src=https://image.jimcdn.com/app/cms/image/transf/dimension=570x10000:format=png/path/s02cd059ba246facc/image/ie1bab13e63dfccbe/version/1595508526/image.png alt="Logo du Club" class="logo">
+    </div> 
+  <div class="container">
+    <h2>Inscription Day1a</h2>
+    <form id="form">
+      <input type="text" name="nom" placeholder="Nom" required />
+      <input type="text" name="prenom" placeholder="Prénom" required />
+      <input type="date" name="date_naissance" required />
+      <input type="text" name="adresse" placeholder="Adresse" required />
+      <input type="email" name="email" placeholder="Email" required />
+      <input type="text" name="club" placeholder="Club" required />
+      <input type="text" name="pseudo" placeholder="Pseudo" required />
+      <input type="text" name="pseudowinamax" placeholder="Pseudo Winamax" />
+      <input type="hidden" name="day1" value="Day1b">
+<br>
+<br>
+<br>
+      <button type="submit">S'INSCRIRE</button>
+    </form>
+  </div>
+  <script>
+    const form = document.getElementById("form");
+    form.addEventListener("submit", async (e) => {
+      e.preventDefault();
+
+      const formData = new FormData(form);
+      const data = {};
+      formData.forEach((value, key) => (data[key] = value));
+
+      const url = "https://script.google.com/macros/s/AKfycbwxJOSSMTNsfCS-Uaig2RzprHFMbgi2PK9PFLsCZJ-lObmGGpwcWhiIuiKDqPZBL3XeOw/exec"; // Remplacer par ton URL Apps Script
+
+      try {
+        const res = await fetch(url, {
+          method: "POST",
+          mode: "no-cors",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(data),
+        });
+
+        localStorage.setItem("registered", "true");
+        window.location.href = "merci.html";
+      } catch (err) {
+        alert("Une erreur est survenue. Réessaye plus tard.");
+        console.error(err);
+      }
+    });
+  </script>
+</body>
+</html>
