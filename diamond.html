@@ -121,31 +121,5 @@
             Vous avez déjà choisi un Day1 pour cet événement.
         </div>
     </div>
-
-    <script>
-        // Vérifier si l'utilisateur est déjà inscrit
-        const registered = localStorage.getItem('registered');
-
-        if (registered === 'true') {
-            // Désactiver tous les boutons si l'utilisateur est déjà inscrit
-            ['day1a', 'day1b', 'day1c'].forEach(id => {
-                const btn = document.getElementById(id);
-                if (btn) {
-                    btn.classList.add('disabled'); // Ajout de la classe "disabled"
-                }
-            });
-
-            // Afficher le message indiquant que l'utilisateur a déjà choisi un Day1
-            const message = document.getElementById('message');
-            if (message) {
-                message.style.display = 'block';
-            }
-        }
-
-        // Exemple de fonction pour définir l'état d'inscription (elle doit être appelée lors de la soumission du formulaire)
-        function setRegistrationStatus() {
-            localStorage.setItem('registered', 'true');
-        }
-    </script>
 </body>
 </html>
