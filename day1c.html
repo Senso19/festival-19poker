@@ -87,6 +87,19 @@
         font-size: 1.4em;
       }
     }
+    #repas {
+  width: 60%;
+  margin: 0 auto 10px auto;
+  display: block;
+  font-size: 1.3em;
+}
+    label[for="repas"] {
+  display: block;
+  text-align: center;
+  font-weight: bold;
+  margin-bottom: 5px;
+  font-size: 1.2em;
+}
   </style>
 </head>
 <body>
@@ -94,7 +107,7 @@
         <img src=https://image.jimcdn.com/app/cms/image/transf/dimension=570x10000:format=png/path/s02cd059ba246facc/image/ie1bab13e63dfccbe/version/1595508526/image.png alt="Logo du Club" class="logo">
     </div> 
   <div class="container">
-    <h2>Inscription Day1a</h2>
+    <h2>Inscription Day1c</h2>
     <form id="form">
       <input type="text" name="nom" placeholder="Nom" required />
       <input type="text" name="prenom" placeholder="Prénom" required />
@@ -105,6 +118,13 @@
       <input type="text" name="pseudo" placeholder="Pseudo" required />
       <input type="text" name="pseudowinamax" placeholder="Pseudo Winamax" />
       <input type="hidden" name="day1" value="Day1c">
+      <!-- Menu déroulant ajouté ici -->
+<label for="repas">Repas :<br> Formule 25€ entrée / plat / fromage / dessert, concocté par nos traiteurs d'exception!</label>
+<select name="repas" id="repas" required>
+  <option value="">-- Choisissez une option --</option>
+  <option value="Oui">Oui</option>
+  <option value="Non">Non</option>
+</select>
 <br>
 <br>
 <br>
