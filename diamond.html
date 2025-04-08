@@ -1,141 +1,289 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Diamond Event</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: #000000;
-        }
-         .header {
-            background-color: #000000;
-            color: white;
-            padding: 50px;
-            text-align: center;
-        }
-        .logo {
-            max-width: 100%;
-            height: auto;
-        }
-        .container {
-            max-width: 80%;
-            margin: 0 auto;
-            padding: 0%;
-            border: 1px solid #ccc;
-            border-radius: 10px;
-            background-color: white;
-            text-align: center;
-        }
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Diamond Event</title>
+  <style>
+    /* Définir la hauteur complète pour HTML et body */
+    html, body {
+      height: 100%; /* Permet de faire en sorte que l'élément prenne toute la hauteur */
+      margin: 0; /* Supprime la marge par défaut */
+      background-color: #000; /* Fond noir pour toute la page */
+      display: flex; /* Utilisation de flexbox pour gérer l'agencement */
+      flex-direction: column; /* Organiser les éléments de manière verticale */
+    }
 
-        h2 {
-            margin-bottom: 20px;
-            font-size: 3.5vw;
-        }
+    body {
+      font-family: Arial, sans-serif; /* Police de caractères */
+      min-height: 100vh; /* Assure que la hauteur minimale de la page est la taille de l'écran */
+      display: flex; /* Utilisation de flexbox pour gérer l'agencement */
+      flex-direction: column; /* Organiser les éléments de manière verticale */
+    }
 
-        p {
-            font-size: 2vw;
-            margin-bottom: 20px;
-        }
+    .header {
+      background-color: #000; /* Fond noir */
+      color: white; /* Texte blanc */
+      padding: 50px; /* Espace autour du texte */
+      text-align: center; /* Centrage du texte */
+    }
 
-        .button {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            width: 100%;
-            max-width: 500px;
-            margin: 10px auto;
-            padding: 15px;
-            background-color: #333333;
-            color: white;
-            text-align: center;
-            border-radius: 5px;
-            text-decoration: none;
-            font-size: 1.8em;
-            transition: background-color 0.3s ease;
-        }
+    .logo {
+      max-width: 100%; /* Limite la largeur du logo */
+      height: auto; /* Garde la proportion du logo */
+    }
 
-        .button:hover {
-            background-color: #000000;
-        }
+    .container {
+      max-width: 95%; /* Limite la largeur du container */
+      margin: 0 auto; /* Centrage horizontal */
+      padding: 0; /* Pas de padding supplémentaire */
+      border: 1px solid #ccc; /* Bordure grise autour du container */
+      border-radius: 10px; /* Coins arrondis */
+      background-color: white; /* Fond blanc */
+      text-align: center; /* Centrage du texte */
+      margin-bottom: 40px; /* Espacement entre la section principale et les onglets */
+    }
 
-        /* Responsive Design */
-        @media (max-width: 768px) {
-            .container {
-                width: 95%;
-                padding: 10%;
-            }
+    h2 {
+      margin-bottom: 20px; /* Espacement sous le titre */
+      font-size: 3.5vw; /* Taille dynamique en fonction de la largeur de l'écran */
+    }
 
-            h2 {
-                font-size: 6vw;
-            }
+    p {
+      font-size: 2vw; /* Taille dynamique pour le texte */
+      margin-bottom: 20px; /* Espacement sous le texte */
+    }
 
-            p {
-                font-size: 4vw;
-            }
+    .button {
+      display: flex; /* Utilisation de flexbox pour centrer les éléments */
+      align-items: center; /* Aligner verticalement */
+      justify-content: center; /* Aligner horizontalement */
+      width: 100%; /* Utiliser toute la largeur disponible */
+      max-width: 600px; /* Largeur maximale de 600px */
+      margin: 10px auto; /* Centrer horizontalement avec un espacement vertical */
+      padding: 15px; /* Espacement à l'intérieur du bouton */
+      background-color: #D4AF37; /* Fond gris foncé */
+      color: white; /* Texte blanc */
+      text-align: center; /* Centrer le texte dans le bouton */
+      border-radius: 5px; /* Coins arrondis */
+      text-decoration: none; /* Supprime la décoration de lien */
+      font-size: 1.8em; /* Taille du texte */
+      transition: background-color 0.3s ease; /* Transition pour le survol */
+    }
 
-            .button {
-                font-size: 1.5em;
-                max-width: 90%;
-                padding: 20px;
-            }
-        }
+    .button:hover {
+      background-color: #000; /* Change la couleur de fond lors du survol */
+    }
 
-        @media (max-width: 480px) {
-            h2 {
-                font-size: 7vw;
-            }
+    /* Style responsive pour les tailles d'écran plus petites */
+    @media (max-width: 768px) {
+      .container {
+        width: 95%; /* Utiliser 95% de la largeur disponible */
+        padding: 10%; /* Espacement autour du contenu */
+      }
 
-            p {
-                font-size: 5vw;
-            }
+      h2 {
+        font-size: 6vw; /* Taille plus grande pour les petits écrans */
+      }
 
-            .button {
-                font-size: 1.3em;
-                max-width: 90%;
-                padding: 15px;
-            }
-        }
+      p {
+        font-size: 4vw; /* Taille plus grande pour le texte */
+      }
 
-        /* Désactivation des boutons */
-        .disabled {
-            background-color: #ccc;
-            color: #666;
-            pointer-events: none;
-            opacity: 0.6;
-        }
+      .button {
+        font-size: 1.5em; /* Réduit la taille du texte dans les boutons */
+        max-width: 90%; /* Utiliser 90% de la largeur disponible */
+        padding: 20px; /* Augmente l'espacement dans les boutons */
+      }
+    }
 
-        /* Style pour le message d'inscription */
-        .message {
-            font-size: 1.5em;
-            color: #f44336;
-            margin-top: 20px;
-        }
-    </style>
+    @media (max-width: 480px) {
+      h2 {
+        font-size: 7vw; /* Taille encore plus grande pour les très petits écrans */
+      }
+
+      p {
+        font-size: 5vw; /* Taille plus grande pour le texte */
+      }
+
+      .button {
+        font-size: 1.3em; /* Réduit la taille du texte */
+        max-width: 90%; /* Utilise 90% de la largeur */
+        padding: 15px; /* Réduit l'espacement dans les boutons */
+      }
+    }
+
+    .disabled {
+      background-color: #ccc; /* Fond gris pour les boutons désactivés */
+      color: #666; /* Texte gris */
+      pointer-events: none; /* Désactive les événements du bouton */
+      opacity: 0.6; /* Diminue l'opacité */
+    }
+
+    .message {
+      font-size: 1.5em; /* Taille du texte du message */
+      color: #f44336; /* Couleur rouge pour les messages d'avertissement */
+      margin-top: 20px; /* Espacement au-dessus du message */
+    }
+
+    /* Zone des onglets */
+    .tabs-section {
+      max-width: 95%; /* Largeur maximale de 95% */
+      margin: 40px auto 20px auto; /* Centrage horizontal avec marges */
+      padding-top: 20px; /* Espacement au-dessus de la section des onglets */
+      border-top: 2px solid #ccc; /* Bordure grise au-dessus de la section */
+      text-align: center; /* Centrage du texte */
+    }
+
+    .tab {
+      display: inline-block; /* Affichage en ligne pour les onglets */
+      margin: 10px 15px; /* Espacement autour des onglets */
+      color: white; /* Texte blanc */
+      text-decoration: none; /* Supprime la décoration du lien */
+      cursor: pointer; /* Change le curseur pour indiquer qu'il est cliquable */
+      padding: 10px; /* Espacement à l'intérieur des onglets */
+      border-radius: 5px; /* Coins arrondis */
+      background-color: #333; /* Fond gris foncé pour les onglets */
+    }
+
+    .tab-title {
+      font-size: 1.5em; /* Taille du texte principal de l'onglet */
+      font-weight: bold; /* Met en gras le titre de l'onglet */
+      display: block; /* Affichage en bloc pour occuper toute la largeur */
+    }
+
+    .tab-sub {
+      font-size: 1em; /* Taille plus petite pour la sous-description */
+      display: block; /* Affichage en bloc pour occuper toute la largeur */
+    }
+
+    /* Contenu des onglets */
+    .tab-content {
+      max-width: 95%; /* Largeur maximale de 95% */
+      margin: 0 auto 40px auto; /* Centrage horizontal avec marge en bas */
+      background-color: white; /* Fond blanc pour le contenu */
+      color: black; /* Texte noir */
+      padding: 20px; /* Espacement à l'intérieur */
+      border-radius: 10px; /* Coins arrondis */
+      display: none; /* Masqué par défaut */
+      text-align: center; /* Centrage horizontal du texte */
+      flex-direction: column; /* Centré verticalement */
+    }
+
+    .tab-content.active {
+      display: block; /* Affiche le contenu actif */
+    }
+
+    /* Zone d'arrière-plan noir */
+    .background-black {
+      flex-grow: 1; /* Permet de remplir toute la hauteur disponible */
+    }
+
+    /* Style du tableau dans l'onglet structure */
+    table {
+      width: 100%; /* Utilise 100% de la largeur disponible */
+      border-collapse: collapse; /* Fusionne les bordures des cellules */
+    }
+
+    th, td {
+      border: 1px solid #ccc; /* Bordure des cellules */
+      padding: 10px; /* Espacement dans les cellules */
+      text-align: center; /* Centrage du texte dans les cellules */
+    }
+
+    th {
+      background-color: #333; /* Fond sombre pour l'en-tête */
+      color: white; /* Texte blanc pour l'en-tête */
+    }
+
+  </style>
 </head>
 <body>
-      <div class="header">
-        <img src=https://image.jimcdn.com/app/cms/image/transf/dimension=570x10000:format=png/path/s02cd059ba246facc/image/ie1bab13e63dfccbe/version/1595508526/image.png alt="Logo du Club" class="logo">
-    </div>
-    <div class="container">
-        <h2>Main Event</h2>
-        <p>Choisissez votre Day1 (Une seule participation possible) :</p>
-        <a href="day1a.html" class="button" id="day1a">Day1a - vendredi 20 juin - 19:00 <br> 78 joueurs max</a>
-        <a href="day1b.html" class="button" id="day1b">Day1b - samedi 21 juin - 09:30 <br> 78 joueurs max</a>
-        <a href="day1c.html" class="button" id="day1c">Day1c Turbo - samedi 21 juin - 13:00 <br> 36 joueurs max</a>
-        <br>
-        <br>
-        <a href="StructureDiamond-Day1.html" class="button" id="StructureDiamond-Day1">Structure Diamond-Day1</a>
-        <a href="StructureDiamond-Day1c.html" class="button" id="StructureDiamond-Day1c">Structure Diamond-Day1c Turbo</a>
-       <br> 
-        <!-- Message pour informer l'utilisateur qu'il est déjà inscrit -->
-        <div class="message" id="message" style="display: none;">
-            Vous avez déjà choisi un Day1 pour cet événement.
-        </div>
+  <div class="background-black">
+    <div class="header">
+      <img src="https://image.jimcdn.com/app/cms/image/transf/dimension=570x10000:format=png/path/s02cd059ba246facc/image/ie1bab13e63dfccbe/version/1595508526/image.png" alt="Logo du Club" class="logo">
     </div>
 
+    <div class="container">
+      <h2>Main Event</h2>
+      <p>Choisissez votre Day1 (Une seule participation possible) :</p>
+
+      <a href="day1a.html" class="button" id="day1a">Day1a - vendredi 20 juin - 19:00 <br> 78 joueurs max</a>
+      <a href="day1b.html" class="button" id="day1b">Day1b - samedi 21 juin - 09:30 <br> 78 joueurs max</a>
+      <a href="day1c.html" class="button" id="day1c">Day1c Turbo - samedi 21 juin - 13:00 <br> 36 joueurs max</a>
+      <br>
+    </div>
+
+    <div class="tabs-section">
+      <a href="#" class="tab" onclick="openTab('prizepool')">
+        <span class="tab-title">Prizepool</span>
+      </a>
+      <a href="#" class="tab" onclick="openTab('structure')">
+        <span class="tab-title">Structure</span>
+      </a>
+      <a href="#" class="tab" onclick="openTab('inscrits')">
+        <span class="tab-title">Liste des Inscrits</span>
+      </a>
+    </div>
+
+    <div id="prizepool" class="tab-content">
+      <h3>Prizepool</h3>
+      <p>Détails du prizepool ici...</p>
+    </div>
+
+    <div id="structure" class="tab-content">
+      <h3>Structure du tournoi</h3>
+      <table>
+        <thead>
+          <tr>
+            <th>Temps</th>
+            <th>SB</th>
+            <th>BB</th>
+            <th>Ante</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>00:00</td>
+            <td>50</td>
+            <td>100</td>
+            <td>0</td>
+          </tr>
+          <tr>
+            <td>00:30</td>
+            <td>100</td>
+            <td>200</td>
+            <td>0</td>
+          </tr>
+	 <tr>
+            <td>01:00</td>
+            <td>150</td>
+            <td>300</td>
+            <td>0</td>
+          </tr>
+
+        </tbody>
+      </table>
+    </div>
+
+    <div id="inscrits" class="tab-content">
+      <h3>Liste des inscrits</h3>
+      <p>Liste des inscrits ici...</p>
+    </div>
+  </div>
+
+  <script>
+    function openTab(tabName) {
+      // Cacher tous les contenus d'onglet
+      var contents = document.querySelectorAll('.tab-content');
+      contents.forEach(function(content) {
+        content.classList.remove('active');
+      });
+
+      // Afficher le contenu de l'onglet sélectionné
+      var selectedTab = document.getElementById(tabName);
+      selectedTab.classList.add('active');
+    }
+  </script>
 </body>
 </html>
