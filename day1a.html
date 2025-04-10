@@ -107,7 +107,7 @@
         <img src=https://image.jimcdn.com/app/cms/image/transf/dimension=570x10000:format=png/path/s02cd059ba246facc/image/ie1bab13e63dfccbe/version/1595508526/image.png alt="Logo du Club" class="logo">
     </div> 
   <div class="container">
-    <h2>Inscription Day1a</h2>
+    <h2>Inscription Day1c</h2>
     <form id="form">
       <input type="text" name="nom" placeholder="Nom" required />
       <input type="text" name="prenom" placeholder="Prénom" required />
@@ -133,29 +133,32 @@
       <button type="submit">S'INSCRIRE</button>
     </form>
   </div>
-<script>
-  const form = document.getElementById("form");
-  form.addEventListener("submit", async (e) => {
-    e.preventDefault();
+  <script>
+    const form = document.getElementById("form");
+    form.addEventListener("submit", async (e) => {
+      e.preventDefault();
 
-    const formData = new FormData(form);
+      const formData = new FormData(form);
+      const data = {};
+      formData.forEach((value, key) => (data[key] = value));
 
-    const url = "https://script.google.com/macros/s/AKfycbwoMr9_NGclJEuM14WkvyA7b1Reok-ba4FT30l_CDR4LuhnHIk2L1do9nD0LRcjeDyJEg/exec";
+      const url = "https://script.google.com/macros/s/AKfycbwoMr9_NGclJEuM14WkvyA7b1Reok-ba4FT30l_CDR4LuhnHIk2L1do9nD0LRcjeDyJEg/exec"; // Remplacer par ton URL Apps Script
 
-    try {
-      await fetch(url, {
-        method: "POST",
-        body: formData
-      });
+      try {
+        const res = await fetch(url, {
+          method: "POST",
+          mode: "no-cors",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(data),
+        });
 
-      localStorage.setItem("registered", "true");
-      window.location.href = "merci.html";
-    } catch (err) {
-      alert("Une erreur est survenue. Réessaye plus tard.");
-      console.error(err);
-    }
-  });
-</script>
-
+        localStorage.setItem("registered", "true");
+        window.location.href = "merci.html";
+      } catch (err) {
+        alert("Une erreur est survenue. Réessaye plus tard.");
+        console.error(err);
+      }
+    });
+  </script>
 </body>
 </html>
