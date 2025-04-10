@@ -133,32 +133,29 @@
       <button type="submit">S'INSCRIRE</button>
     </form>
   </div>
-  <script>
-    const form = document.getElementById("form");
-    form.addEventListener("submit", async (e) => {
-      e.preventDefault();
+<script>
+  const form = document.getElementById("form");
+  form.addEventListener("submit", async (e) => {
+    e.preventDefault();
 
-      const formData = new FormData(form);
-      const data = {};
-      formData.forEach((value, key) => (data[key] = value));
+    const formData = new FormData(form);
 
-      const url = "https://script.google.com/macros/s/AKfycbwu_KtKZ3FnV7s1OxZSZ8qNqKhefMLWOoONT6m8LauVfnGMQQGDaq8jfrPpoUvlItbA/exec"; // Remplacer par ton URL Apps Script
+    const url = "https://script.google.com/macros/s/AKfycbwu_KtKZ3FnV7s1OxZSZ8qNqKhefMLWOoONT6m8LauVfnGMQQGDaq8jfrPpoUvlItbA/exec";
 
-      try {
-        const res = await fetch(url, {
-          method: "POST",
-          mode: "no-cors",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify(data),
-        });
+    try {
+      await fetch(url, {
+        method: "POST",
+        body: formData
+      });
 
-        localStorage.setItem("registered", "true");
-        window.location.href = "merci.html";
-      } catch (err) {
-        alert("Une erreur est survenue. Réessaye plus tard.");
-        console.error(err);
-      }
-    });
-  </script>
+      localStorage.setItem("registered", "true");
+      window.location.href = "merci.html";
+    } catch (err) {
+      alert("Une erreur est survenue. Réessaye plus tard.");
+      console.error(err);
+    }
+  });
+</script>
+
 </body>
 </html>
