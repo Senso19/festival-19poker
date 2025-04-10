@@ -86,57 +86,50 @@
   </div> 
   <div class="container">
     <h2>Inscription Day1a</h2>
-    <form id="form">
-      <input type="text" name="nom" placeholder="Nom" required />
-      <input type="text" name="prenom" placeholder="Prénom" required />
-      <input type="text" name="date_naissance" placeholder="Date de naissance (jj/mm/aaaa)" required />
-      <input type="text" name="adresse" placeholder="Adresse" required />
-      <input type="email" name="email" placeholder="Email" required />
-      <input type="text" name="club" placeholder="Club" required />
-      <input type="text" name="pseudo" placeholder="Pseudo" required />
-      <input type="text" name="pseudowinamax" placeholder="Pseudo Winamax" />
-      <input type="hidden" name="day1" value="Day1a" />
+<form id="form">
+  <input type="text" name="nom" placeholder="Nom" required />
+  <input type="text" name="prenom" placeholder="Prénom" required />
+  <input type="text" name="date_naissance" placeholder="Date de naissance (jj/mm/aaaa)" required />
+  <input type="text" name="adresse" placeholder="Adresse" required />
+  <input type="email" name="email" placeholder="Email" required />
+  <input type="text" name="club" placeholder="Club" required />
+  <input type="text" name="pseudo" placeholder="Pseudo" required />
+  <input type="text" name="pseudowinamax" placeholder="Pseudo Winamax" />
+  <input type="hidden" name="day1" value="Day1a" />
 
-      <label for="repas">Repas :<br> Formule 25€ entrée / plat / fromage / dessert, concocté par nos traiteurs d'exceptions!</label>
-      <select name="repas" id="repas" required>
-        <option value="">-- Choisissez une option --</option>
-        <option value="Oui">Oui</option>
-        <option value="Non">Non</option>
-      </select>
+  <label for="repas">Repas :</label>
+  <select name="repas" id="repas" required>
+    <option value="">-- Choisissez une option --</option>
+    <option value="Oui">Oui</option>
+    <option value="Non">Non</option>
+  </select>
 
-      <br><br>
-      <button type="submit">S'INSCRIRE</button>
-    </form>
-  </div>
+  <button type="submit">S'inscrire</button>
+</form>
 
-  <script>
-    const form = document.getElementById("form");
-    form.addEventListener("submit", async (e) => {
-      e.preventDefault();
+<script>
+  document.getElementById("form").addEventListener("submit", async (e) => {
+    e.preventDefault();
 
-      const formData = new FormData(form);
-      const data = {};
-      formData.forEach((value, key) => data[key] = value);
+    const formData = new FormData(e.target);
+    const data = {};
+    formData.forEach((value, key) => data[key] = value);
 
-      const url = "https://script.google.com/macros/s/AKfycbwu_KtKZ3FnV7s1OxZSZ8qNqKhefMLWOoONT6m8LauVfnGMQQGDaq8jfrPpoUvlItbA/exec";
+    try {
+      await fetch("https://script.google.com/macros/s/AKfycbwu_KtKZ3FnV7s1OxZSZ8qNqKhefMLWOoONT6m8LauVfnGMQQGDaq8jfrPpoUvlItbA/exec", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(data)
+      });
 
-      try {
-        await fetch(url, {
-          method: "POST",
-          mode: "no-cors", // Important pour éviter les erreurs de CORS avec Apps Script
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify(data),
-        });
+      localStorage.setItem("registered", "true");
+      window.location.href = "merci.html";
+    } catch (err) {
+      alert("Erreur lors de l'inscription.");
+      console.error(err);
+    }
+  });
+</script>
 
-        localStorage.setItem("registered", "true");
-        window.location.href = "merci.html";
-      } catch (err) {
-        alert("Une erreur est survenue. Réessaye plus tard.");
-        console.error(err);
-      }
-    });
-  </script>
 </body>
 </html>
